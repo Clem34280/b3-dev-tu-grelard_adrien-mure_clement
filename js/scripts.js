@@ -15,6 +15,8 @@ let operation = null;
 // On initialise la mémoire
 let memoire;
 
+let exponent = document.querySelector("#exponent");
+
 window.onload = () => {
     // On écoute les clics sur les touches
     let touches = document.querySelectorAll("span");
@@ -38,7 +40,7 @@ function gererTouches(event){
     let touche;
 
     // On liste les touches autorisées
-    const listeTouches = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "*", "/", ".", "%", "Enter", "Escape"];
+    const listeTouches = ["+", "-", "*", "/", "%", "²", "√", "^", "Enter", "Escape"];
 
     // On vérifie si on a l'évènement "keydown"
     if(event.type === "keydown"){
@@ -62,6 +64,16 @@ function gererTouches(event){
     }else if(parseFloat(touche) >= 0 || touche === "%"){
         affichage = (affichage === "") ? touche.toString() : affichage / 100;
         ecranElt.innerText = affichage;
+    }else if(parseFloat(touche) >= 0 || touche === "²"){
+        affichage = (affichage === "") ? touche.toString() : affichage * affichage;
+        ecranElt.innerText = affichage;
+    }else if(parseFloat(touche) >= 0 || touche === "√"){
+        affichage = (affichage === "") ? touche.toString() : Math.sqrt(affichage);
+        ecranElt.innerText = affichage;
+    }else if(parseFloat(touche) >= 0 || touche === "^"){
+        //base = parseFloat(affichage);
+        affichage = (affichage === "") ? touche.toString() : Math.pow(affichage, exponent);
+        ecranElt.innerText = affichage;
     }else{
         switch(touche){
             // Touche C réinitialise tout
@@ -73,8 +85,6 @@ function gererTouches(event){
                 ecranElt.innerText = 0;
                 break;
             // Calculs
-            case "%":
-                affichage = affichage / 100;
             case "+":
             case "-":
             case "*":
