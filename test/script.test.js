@@ -24,4 +24,30 @@ describe('Calculs de la calculatrice', function() {
       expect(resultat4.to.equal(2));
       done();
     });
+
+    it('devrait effectuer le pourcentage', () => {
+        let resultat5 = 50 + gererTouches("%");
+        expect(resultat5.to.equal(0.5));
+        done();
+      });
+});
+
+describe('Calculs de la calculatrice scientifique', function() {
+    it('devrait effectuer un carré', function(done) {
+      let resultat6 = 5 + gererTouches("²");
+      expect(resultat6.to.equal(25));
+      done();
+    });
+  
+    it('devrait effectuer une racine carré', function(done) {
+      let resultat7 = 9 + gererTouches("√");
+      expect(resultat7.to.equal(3));
+      done();
+    });
+  
+    it('devrait effectuer une puissance', function(done) {
+      let resultat8 = 5 + gererTouches("^") + exponent;
+      expect(resultat8.to.equal(5)); // car exponent définit à 1 par default
+      done();
+    });
 });
