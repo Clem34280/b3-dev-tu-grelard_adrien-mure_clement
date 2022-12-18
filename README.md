@@ -14,4 +14,4 @@ si l'on veux faire le carré d'un nombre, il faut selectionner un chiffre/nombre
 
 si l'on veux faire la racine carré d'un chiffre/nombre, il faut selectionner un chiffre/nombre puis le signe "√";
 
-si l'on veux faire la puissance d'un chiffre/nombre, il faut selectionner un chiffre/nombre puis le signe "^" puis sélectionner le chiffre/nombre par lequel on va mettre a la puissance;
+si l'on veux faire la puissance d'un chiffre/nombre, il faut selectionner un chiffre/nombre puis le signe "^" puis sélectionner le chiffre/nombre par lequel on va mettre a la puissance(elle marche pas pour l'instant);
