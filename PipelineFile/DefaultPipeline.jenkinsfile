@@ -20,7 +20,7 @@ pipeline {
             steps {
                 catchError(stageResult: 'FAILURE') {
                     nodejs('Default') {
-                        executejs 'Test.js', "${WORKSPACE}"
+                        executejs 'script.test.js', "${WORKSPACE}"
                     }
                 }
             }
