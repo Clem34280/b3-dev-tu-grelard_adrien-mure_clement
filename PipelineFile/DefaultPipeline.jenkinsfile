@@ -28,7 +28,7 @@ pipeline {
         stage('report') {
             steps {
                 discordSend webhookURL:
-                    "https://discord.com/api/webhooks/1088770122988134410/Hs5fu3t1vlTHTQcTcOwjwZvZw8ilFv0NNKNVZccVSH6ZS0NvI6u3DtPUUdG2Y8S834u0",
+                    "https://discord.com/api/webhooks/1088806713655836683/3a1vYrl8eOpwLYmPAR9Lj8-yMW_aOIZuqJcfeRegyK-F97b-mj7bp7ytEoaUtxHMZKOi",
                     title: "Build version : ${env.BUILD_NAME} - ${BUILD_DATE}.",
                     description: "Build test finished with status : ${currentBuild.currentResult}.",
                     enableArtifactsList: true,
