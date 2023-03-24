@@ -1,0 +1,39 @@
+!groovy
+@Library('jenkins-common') _
+
+pipeline {
+    agent { label "${env.PROJECT}"}
+
+    environment {
+        BUILD_DATE = getCurrentDate()
+    }
+
+    stages {
+        stage("Synchro Git") {
+            steps {
+                catchError(stageResult: 'FAILURE') {
+                    git branch : "${env.BRANCH}", url:'https://github.com/Clem34280/b3-dev-tu-grelard_adrien-mure_clement.git'
+                }
+            }
+        }
+        stage('Tests') {
+            steps {
+                catchError(stageResult: 'FAILURE') {
+                    nodejs('Default') {
+                        executejs 'Test.js', "${WORKSPACE}"
+                    }
+                }
+            }
+        }
+        stage('report') {
+            steps {
+                discordSend webhookURL:
+                    https://discord.com/api/webhooks/1088770122988134410/Hs5fu3t1vlTHTQcTcOwjwZvZw8ilFv0NNKNVZccVSH6ZS0NvI6u3DtPUUdG2Y8S834u0,
+                    title: "Build version : ${env.BUILD_NAME} - ${BUILD_DATE}.",
+                    description: "Build test finished with status : ${currentBuild.currentResult}.",
+                    enableArtifactsList: true,
+                    showChangeset: true
+            }
+        }
+    }
+}
